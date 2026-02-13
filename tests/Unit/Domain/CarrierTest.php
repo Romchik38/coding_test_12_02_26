@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Unit;
+namespace App\Tests\Unit\Domain;
 
-use App\Tests\Unit\Helpers\CarrierCalculator;
+use App\Tests\Unit\Domain\Helpers\CarrierCalculator;
 use PHPUnit\Framework\TestCase;
 use App\Domain\Carrier\Carrier;
 use App\Domain\Carrier\VO\Name;

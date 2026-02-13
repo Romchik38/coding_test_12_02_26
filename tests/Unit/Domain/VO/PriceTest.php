@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Unit\VO;
+namespace App\Tests\Unit\Domain\VO;
 
 use App\Domain\Carrier\VO\Price;
 use InvalidArgumentException;

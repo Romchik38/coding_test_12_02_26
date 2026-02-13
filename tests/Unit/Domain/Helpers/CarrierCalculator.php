@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Unit\Helpers;
+namespace App\Tests\Unit\Domain\Helpers;
 
 use App\Domain\Carrier\ShippingCostCalculatorInterface;
 use App\Domain\Carrier\VO\Price;
