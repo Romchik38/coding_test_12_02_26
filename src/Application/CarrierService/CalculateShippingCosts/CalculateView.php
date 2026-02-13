@@ -7,8 +7,10 @@ namespace App\Application\CarrierService\CalculateShippingCosts;
 use App\Domain\Carrier\VO\Price;
 use App\Domain\Carrier\VO\Slug;
 use App\Domain\Carrier\VO\Weight;
+use App\Application\CarrierService\CalculateShippingCosts\CalculateCommand;
+use JsonSerializable;
 
-final class CalculateView
+final class CalculateView implements JsonSerializable
 {
     public function __construct(
         public readonly Slug $carrierSlug,
@@ -25,5 +27,21 @@ final class CalculateView
     public function getWeight(): float
     {
         return $this->weight->value;
+    }
+
+    public function getPrice(): float
+    {
+        return $this->price->value;
+    }
+
+
+    public function jsonSerialize(): mixed
+    {
+        return [
+            CalculateCommand::slugField => $this->getSlug(),
+            CalculateCommand::weightField => $this->getWeight(),
+            'currency' => 'EUR',
+            'price' => $this->getPrice()
+        ];
     }
 }
