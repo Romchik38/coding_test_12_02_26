@@ -7,6 +7,7 @@ namespace App\Application\CarrierService;
 use App\Application\CarrierService\CalculateShippingCosts\CalculateCommand;
 use App\Application\CarrierService\CalculateShippingCosts\CalculateException;
 use App\Application\CarrierService\CalculateShippingCosts\CalculateView;
+use App\Application\CarrierService\List\ListDto;
 use App\Domain\Carrier\VO\Slug;
 use App\Domain\Carrier\VO\Weight;
 use InvalidArgumentException;
@@ -40,5 +41,21 @@ final class CarrierService
             $weight,
             $price
         );
+    }
+
+    /**
+     * @return array<int, ListDto>
+     */
+    public function list(): array
+    {
+        $carriers = $this->repository->list();
+        $dtos = [];
+        foreach ($carriers as $carrier) {
+            $dtos[] = new ListDto(
+                $carrier->name,
+                $carrier->slug
+            );
+        }
+        return $dtos;
     }
 }

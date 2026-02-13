@@ -53,4 +53,9 @@ final class CarrierRepository implements CarrierRepositoryInterface
         }
         return $carrier;
     }
+
+    public function list(): array
+    {
+        return array_values($this->carriers);
+    }
 }
