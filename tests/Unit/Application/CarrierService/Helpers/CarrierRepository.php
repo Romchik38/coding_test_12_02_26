@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Unit\Application\Helpers;
+namespace App\Tests\Unit\Application\CarrierService\Helpers;
 
 use App\Application\CarrierService\CarrierRepositoryInterface;
 use App\Application\CarrierService\NoSuchCarrierException;

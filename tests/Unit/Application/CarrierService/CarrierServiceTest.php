@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Unit\Application;
+namespace App\Tests\Unit\Application\CarrierService;
 
 use App\Application\CarrierService\CalculateShippingCosts\CalculateCommand;
 use App\Application\CarrierService\CalculateShippingCosts\CalculateException;
@@ -12,8 +12,8 @@ use App\Domain\Carrier\Carrier;
 use App\Domain\Carrier\VO\Name;
 use App\Domain\Carrier\VO\Price;
 use App\Domain\Carrier\VO\Slug;
-use App\Tests\Unit\Application\Helpers\CarrierCalculator;
-use App\Tests\Unit\Application\Helpers\CarrierRepository;
+use App\Tests\Unit\Application\CarrierService\Helpers\CarrierCalculator;
+use App\Tests\Unit\Application\CarrierService\Helpers\CarrierRepository;
 
 class CarrierServiceTest extends TestCase
 {
