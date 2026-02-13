@@ -15,6 +15,9 @@ final class CarrierRepository implements CarrierRepositoryInterface
     /** @param array<string, Carrier> $carriers */
     private array $carriers = [];
 
+    /**
+     * @param array<int,array<int<string>>
+     */
     public function __construct(
         array $carriers
     ) {

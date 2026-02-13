@@ -56,5 +56,5 @@ class CarrierServiceTest extends TestCase
 
         $this->expectException(CalculateException::class);
         $carrierService->calculateShippingCosts($command);
-    }    
+    }
 }
