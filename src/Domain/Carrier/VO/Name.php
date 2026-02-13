@@ -6,7 +6,7 @@ namespace App\Domain\Carrier\VO;
 
 use InvalidArgumentException;
 
-/** 
+/**
  * @throws InvalidArgumentException
  */
 final class Name

@@ -17,8 +17,8 @@ final class CarrierService
         private readonly CarrierRepositoryInterface $repository
     ) {
     }
-    
-    /** 
+
+    /**
      * @throws InvalidArgumentException
      * @throws CalculateException
      */
@@ -29,7 +29,7 @@ final class CarrierService
 
         try {
             $carrier = $this->repository->findCarrierBySlug($slug);
-        } catch (NoSuchCarrierException $e){
+        } catch (NoSuchCarrierException $e) {
             throw new CalculateException($e->getMessage());
         }
 
