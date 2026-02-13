@@ -6,6 +6,19 @@ namespace App\Application\CarrierService\CalculateShippingCosts;
 
 final class CalculateCommand
 {
-    public readonly string $carrierSlug;
-    public readonly string $weight;
+    public const slugField = 'slug';
+    public const weightField = 'weight';
+
+    public function __construct(
+        public readonly string $carrierSlug,
+        public readonly string $weight
+    ) {
+    }
+
+    public static function fromHash(array $hash): self
+    {
+        $slug = $hash(self::slugField) ?? '';
+        $weight = $hash(self::weightField) ?? '';
+        return new self($slug, $weight);
+    }
 }
