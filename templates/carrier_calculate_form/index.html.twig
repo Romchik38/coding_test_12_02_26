@@ -9,12 +9,25 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <h1>Calculate shipping costs</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>/home/ser/Projects/Php/Symfony/coding_test_12_02_26/src/Controller/CarrierCalculateFormController.php</code></li>
-        <li>Your template at <code>/home/ser/Projects/Php/Symfony/coding_test_12_02_26/templates/carrier_calculate_form/index.html.twig</code></li>
-    </ul>
+    <form action="/api/shipping/calculate" method="post" id="shipping-calculate-form">
+        <div>
+            <label for="{{ carrier_weight_field }}">Weight:</label>
+            <input type="number" id="{{ carrier_weight_field }}" name="{{ carrier_weight_field }}" min="0" max="100" required/>
+        </div>
+
+        <div>
+            <label for="{{ carrier_slug_field }}">Carrier:</label>
+            <select class="carrier-select" name="{{ carrier_slug_field }}" required>
+            {% for carrier in carriers %}
+                <option value="{{ carrier.getSlug() }}">{{ carrier.getName() }}</option>
+            {% endfor %}
+            </select>
+        </div>
+        <div>
+            <button type="submit">Calculate</button>
+        </div>
+    </form>
 </div>
 {% endblock %}
