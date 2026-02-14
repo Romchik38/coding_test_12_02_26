@@ -15,7 +15,7 @@ final class Slug
         public readonly string $value
     ) {
         if ($value === '') {
-            throw new InvalidArgumentException('param value is invalid');
+            throw new InvalidArgumentException('param carrier slug is invalid');
         }
     }
 }

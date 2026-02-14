@@ -15,7 +15,7 @@ final class Name
         public readonly string $value
     ) {
         if ($value === '') {
-            throw new InvalidArgumentException('param value is invalid');
+            throw new InvalidArgumentException('param carrier name is invalid');
         }
     }
 }

@@ -25,12 +25,11 @@ final class CarrierService
      */
     public function calculateShippingCosts(CalculateCommand $command): CalculateView
     {
-        $slug = new Slug($command->carrierSlug);
-        $weight = Weight::fromString($command->weight);
-
         try {
+            $slug = new Slug($command->carrierSlug);
+            $weight = Weight::fromString($command->weight);
             $carrier = $this->repository->findCarrierBySlug($slug);
-        } catch (NoSuchCarrierException $e) {
+        } catch (NoSuchCarrierException | InvalidArgumentException  $e) {
             throw new CalculateException($e->getMessage());
         }
 

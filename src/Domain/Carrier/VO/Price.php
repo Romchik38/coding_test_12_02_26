@@ -12,7 +12,7 @@ final class Price
         public readonly float $value
     ) {
         if ($value < 0) {
-            throw new InvalidArgumentException('param value is invalid');
+            throw new InvalidArgumentException('param carrier price is invalid');
         }
     }
 }

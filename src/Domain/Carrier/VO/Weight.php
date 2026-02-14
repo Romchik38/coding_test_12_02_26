@@ -16,7 +16,7 @@ final class Weight
         public float $value
     ) {
         if ($value <= 0) {
-            throw new InvalidArgumentException('param value is invalid');
+            throw new InvalidArgumentException('param carrier wieght is invalid');
         }
     }
 
