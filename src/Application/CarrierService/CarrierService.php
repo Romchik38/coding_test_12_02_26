@@ -20,7 +20,6 @@ final class CarrierService
     }
 
     /**
-     * @throws InvalidArgumentException
      * @throws CalculateException
      */
     public function calculateShippingCosts(CalculateCommand $command): CalculateView
