@@ -2,7 +2,74 @@
 
 Contents:
 
-- Task
+- Incoming task
 - Install
 - Frontend form
 - Backend structure
+- Extension
+
+## Incoming task
+
+[pdf](./docs/Coding%20Test%20—%20Junior%20PHP%20Developer%20(Symfony).pdf)
+
+## Install
+
+1. Docker install:
+
+    ```bash
+    docker compose build
+    docker compose up -d
+    ```
+
+2. Check - `localhost:8000`.
+
+## Frontend form
+
+Visit `localhost:8000`and use a form to check the api.
+
+## Backend structure
+
+```sheme
+Request               User          Response
+                   |        /\
+Post Form          |        |       Json object (status & data)
+multipart/form-data|        |
+                   \/       |
+                     Symfony
+                   \/       /\             
+                Http Controller
+                   |        /\     
+Calculate command  |        |       View Dto
+                   |        |
+                   \/       |
+                Carrier Service
+                   |        /\
+Find via VO Slug   |        |       Carrier
+                   \/       |
+                Carrier Repository
+                   |
+Use Symfony        |         
+config as adata    |
+container          |
+                   \/   
+                  Symfony config
+```
+
+## Extension
+
+### Adding new carrier
+
+1. Implement a new calculate class in [dir](./src/Application/CarrierService/ShippingCostCalculators/)
+2. Add a new row to the `app.carrier_data` parameter in the [config file](./config/services.yaml):
+    - name
+    - slug
+    - classname (from #1)
+
+### New Persistence
+
+If you would like to use sql, file storage, or another persistence method, you only need to modify or replace the *repository* to extend the application.
+
+The Carrier service depends on the repository interface.
+
+1. Create a new repository
+2. Register it as an alias in the [services.yaml](./config/services.yaml)

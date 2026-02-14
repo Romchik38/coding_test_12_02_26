@@ -1,4 +1,3 @@
 # Todo
 
-- readme
 - test controller
