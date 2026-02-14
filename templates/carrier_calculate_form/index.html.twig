@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello CarrierCalculateFormController!{% endblock %}
+{% block title %}Zoo - calculate shipping costs{% endblock %}
 
 {% block body %}
 <style>
@@ -13,7 +13,7 @@
 
     <form class="api-calculate-form" action="/api/shipping/calculate" method="post" id="shipping-calculate-form">
         <div>
-            <label for="{{ carrier_weight_field }}">Weight:</label>
+            <label for="{{ carrier_weight_field }}">Weight(kg):</label>
             <input class="api-calculate-weight" type="number" id="{{ carrier_weight_field }}" name="{{ carrier_weight_field }}" min="0" required step="0.001"/>
         </div>
 

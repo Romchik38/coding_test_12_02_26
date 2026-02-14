@@ -41,9 +41,8 @@ f.onEvent('submit', (e) => {
             em.show();
         } else {
             // on success
-            console.log({ 'api-calculate': data.price });
             em.hide();
-            sm.text('Price: ' + data.price.toString());
+            sm.text('Price: ' + data.price.toString() + ' EUR');
             sm.show();
         }
         // finally
