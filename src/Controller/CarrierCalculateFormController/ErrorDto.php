@@ -5,12 +5,9 @@ declare(strict_types=1);
 namespace App\Controller\CarrierCalculateFormController;
 
 use InvalidArgumentException;
-use JsonSerializable;
 
-final class ErrorDto implements JsonSerializable
+final class ErrorDto extends Dto
 {
-    public const ERROR_FILED = 'error';
-
     public function __construct(
         public readonly string $errorMessage
     ) {
@@ -22,7 +19,8 @@ final class ErrorDto implements JsonSerializable
     public function jsonSerialize(): mixed
     {
         return [
-            $this::ERROR_FILED => $this->errorMessage
+            $this::STATUS_FIELD => $this::ERROR_FIELD,
+            $this::RESULT_FIELD => $this->errorMessage
         ];
     }
 }

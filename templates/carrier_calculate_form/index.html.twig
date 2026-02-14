@@ -11,25 +11,25 @@
 <div class="example-wrapper">
     <h1>Calculate shipping costs</h1>
 
-    <form class="api-shipping-calculate" action="/api/shipping/calculate" method="post" id="shipping-calculate-form">
+    <form class="api-calculate-form" action="/api/shipping/calculate" method="post" id="shipping-calculate-form">
         <div>
             <label for="{{ carrier_weight_field }}">Weight:</label>
-            <input type="number" id="{{ carrier_weight_field }}" name="{{ carrier_weight_field }}" min="0" max="100" required/>
+            <input class="api-calculate-weight" type="number" id="{{ carrier_weight_field }}" name="{{ carrier_weight_field }}" min="0" required step="0.001"/>
         </div>
 
         <div>
             <label for="{{ carrier_slug_field }}">Carrier:</label>
-            <select class="carrier-select" name="{{ carrier_slug_field }}" required>
+            <select class="api-calculate-slug" name="{{ carrier_slug_field }}" required>
             {% for carrier in carriers %}
                 <option value="{{ carrier.getSlug() }}">{{ carrier.getName() }}</option>
             {% endfor %}
             </select>
         </div>
         <div>
-            <button type="submit">Calculate price</button>
+            <button class="api-calculate-btn" type="submit">Calculate price</button>
         </div>
-        <div class="success_message" style="display:none; color:green"></div>
-        <div class="error_message" style="display:none;color:red"></div>
+        <div class="api-calculate-success_message" style="display:none; color:green"></div>
+        <div class="api-calculate-error_message" style="display:none;color:red"></div>
     </form>
 
     <script type="module" src="/media/js/carrier_calculate_form/index.js" fetchpriority="low"></script>

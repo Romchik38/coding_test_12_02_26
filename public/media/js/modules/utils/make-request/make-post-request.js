@@ -43,7 +43,7 @@ export default function(path, requestData, callback) {
     });
     
     fetch(request).then(function (response) {
-        if (response.status === 200) {
+        // if (response.status === 200) {
             response.json().then((data) => {
                 var dataKeys = Object.keys(data);
                 if (dataKeys.indexOf('status') > -1) {
@@ -56,7 +56,12 @@ export default function(path, requestData, callback) {
                         }
                     } else {
                         console.log(data);
-                        callback(new Error('Response status not success'), null);
+                        var notSuccessMessage = 'Response status not success';
+                        var notSuccessResult = data['result'];
+                        if (notSuccessResult !== undefined && result !== '') {
+                            notSuccessMessage = notSuccessResult;
+                        }
+                        callback(new Error(notSuccessMessage), null);
                     }
                 } else {
                     callback(new Error('Response status not found'), null);
@@ -64,10 +69,10 @@ export default function(path, requestData, callback) {
             }, (err) => {
                 callback(err, null);
             })
-        } else {
-            var statusError = new Error(`Server response with status: ${response.status}`);
-            callback(statusError, null);
-        }
+        // } else {
+        //     var statusError = new Error(`Server response with status: ${response.status}`);
+        //     callback(statusError, null);
+        // }
     }, function (error) {
         callback(error, null);
     });

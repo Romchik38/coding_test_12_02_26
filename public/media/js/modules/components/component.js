@@ -22,7 +22,7 @@ export default class Component extends EE {
         this.fnShow = null;
 
         // events
-        this.domEvents = ['click', 'change'];
+        this.domEvents = ['click', 'change', 'submit'];
         this.registeredEvents = [];
     }
 
@@ -125,6 +125,14 @@ export default class Component extends EE {
 
     setValue(val) {
         this.node.value = val;
+    }
+
+    getName() {
+        return this.node.name;
+    }
+
+    setName(val) {
+        this.node.name = val;
     }
 
     static fromClass(className) {

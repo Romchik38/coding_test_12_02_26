@@ -9,6 +9,7 @@ use Symfony\Component\Routing\Attribute\Route;
 use App\Application\CarrierService\CalculateShippingCosts\CalculateCommand;
 use App\Application\CarrierService\CalculateShippingCosts\CalculateException;
 use App\Controller\CarrierCalculateFormController\ErrorDto;
+use App\Controller\CarrierCalculateFormController\SuccessDto;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -39,7 +40,8 @@ final class CarrierCalculateFormController extends AbstractController
         $command = CalculateCommand::fromHash($params);
         try {
             $viewDto = $this->carrierService->calculateShippingCosts($command);
-            return new JsonResponse($viewDto);
+            $successDto = new SuccessDto($viewDto);
+            return new JsonResponse($successDto);
         } catch (CalculateException $e) {
             $errorDto = new ErrorDto($e->getMessage());
             return new JsonResponse($errorDto, 400);
