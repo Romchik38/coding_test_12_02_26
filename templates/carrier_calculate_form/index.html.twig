@@ -11,7 +11,7 @@
 <div class="example-wrapper">
     <h1>Calculate shipping costs</h1>
 
-    <form action="/api/shipping/calculate" method="post" id="shipping-calculate-form">
+    <form class="api-shipping-calculate" action="/api/shipping/calculate" method="post" id="shipping-calculate-form">
         <div>
             <label for="{{ carrier_weight_field }}">Weight:</label>
             <input type="number" id="{{ carrier_weight_field }}" name="{{ carrier_weight_field }}" min="0" max="100" required/>
@@ -26,8 +26,12 @@
             </select>
         </div>
         <div>
-            <button type="submit">Calculate</button>
+            <button type="submit">Calculate price</button>
         </div>
+        <div class="success_message" style="display:none; color:green"></div>
+        <div class="error_message" style="display:none;color:red"></div>
     </form>
+
+    <script type="module" src="/media/js/carrier_calculate_form/index.js" fetchpriority="low"></script>
 </div>
 {% endblock %}
