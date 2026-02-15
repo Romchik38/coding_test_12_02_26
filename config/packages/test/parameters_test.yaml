@@ -1,0 +1,8 @@
+parameters:
+    app.carrier_data: [
+                [
+                    'Testcompany1',
+                    'testcompany1',
+                    'App\Tests\Controller\Helpers\CarrierCalculator'
+                ],
+            ]

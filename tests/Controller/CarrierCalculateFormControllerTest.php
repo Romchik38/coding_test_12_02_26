@@ -5,7 +5,6 @@ namespace App\Tests\Controller;
 use App\Application\CarrierService\CalculateShippingCosts\CalculateCommand;
 use App\Application\CarrierService\CalculateShippingCosts\CalculateView;
 use App\Controller\CarrierCalculateFormController\Dto;
-use App\Controller\CarrierCalculateFormController\SuccessDto;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class CarrierCalculateFormControllerTest extends WebTestCase
@@ -14,10 +13,12 @@ class CarrierCalculateFormControllerTest extends WebTestCase
     {
         $slugField = CalculateCommand::slugField;
         $weightField  = CalculateCommand::weightField;
+        $carrierSlug = 'testcompany1';
+        $weight = 10;
         $client = static::createClient();
         $client->request('POST', '/api/shipping/calculate', [
-            $weightField => 10,
-            $slugField => 'transcompany',
+            $weightField => $weight,
+            $slugField => $carrierSlug,
         ]);
 
         $this->assertResponseIsSuccessful();
@@ -30,9 +31,9 @@ class CarrierCalculateFormControllerTest extends WebTestCase
 
         $this->assertSame(Dto::SUCCESS_FIELD, $status);
 
-        $this->assertSame('transcompany', $result[$slugField]);
-        $this->assertSame(10, $result[$weightField]);
+        $this->assertSame($carrierSlug, $result[$slugField]);
+        $this->assertSame($weight, $result[$weightField]);
         $this->assertSame('EUR', $result[CalculateView::CURRENCY_FIELD]);
-        $this->assertSame(20, $result[CalculateView::PRICE_FIELD]);
+        $this->assertSame($weight, $result[CalculateView::PRICE_FIELD]);
     }
 }

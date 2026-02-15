@@ -1,0 +1,13 @@
+parameters:
+    app.carrier_data: [
+                [
+                    'Transcompany',
+                    'transcompany',
+                    'App\Application\CarrierService\ShippingCostCalculators\TranscompanyCalculator'
+                ],
+                [
+                    'PackGroup',
+                    'packgroup',
+                    'App\Application\CarrierService\ShippingCostCalculators\PackGroupCalculator'
+                ]
+            ]
