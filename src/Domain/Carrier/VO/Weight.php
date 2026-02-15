@@ -6,12 +6,10 @@ namespace App\Domain\Carrier\VO;
 
 use InvalidArgumentException;
 
+/** Weight,kg */
 final class Weight
 {
-    /**
-     * Weight in kg
-     * @throws InvalidArgumentException
-     */
+    /** @throws InvalidArgumentException */
     public function __construct(
         public float $value
     ) {

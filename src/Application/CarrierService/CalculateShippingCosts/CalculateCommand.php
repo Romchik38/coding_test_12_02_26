@@ -18,6 +18,7 @@ final class CalculateCommand
     }
 
     /**
+     * @param array<string|int,mixed>
      * @throws InvalidArgumentException
      */
     public static function fromHash(array $hash): self

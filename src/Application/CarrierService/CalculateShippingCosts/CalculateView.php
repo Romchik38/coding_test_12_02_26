@@ -37,7 +37,6 @@ final class CalculateView implements JsonSerializable
         return $this->price->value;
     }
 
-
     public function jsonSerialize(): mixed
     {
         return [

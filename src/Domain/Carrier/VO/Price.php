@@ -8,6 +8,7 @@ use InvalidArgumentException;
 
 final class Price
 {
+    /** @throws InvalidArgumentException */
     public function __construct(
         public readonly float $value
     ) {

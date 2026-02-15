@@ -6,11 +6,9 @@ namespace App\Domain\Carrier\VO;
 
 use InvalidArgumentException;
 
-/**
- * @throws InvalidArgumentException
- */
 final class Slug
 {
+    /** @throws InvalidArgumentException */
     public function __construct(
         public readonly string $value
     ) {

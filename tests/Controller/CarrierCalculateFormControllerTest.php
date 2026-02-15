@@ -7,8 +7,15 @@ use App\Application\CarrierService\CalculateShippingCosts\CalculateView;
 use App\Controller\CarrierCalculateFormController\Dto;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
+/**
+ * The test uses config data from config/packages/test/parameters_test.yaml
+ * The calculator is App\Tests\Controller\Helpers\CarrierCalculator
+ */
 class CarrierCalculateFormControllerTest extends WebTestCase
 {
+    /**
+     * Success test.
+     */
     public function testCalculateShippingCostsSuccess(): void
     {
         $slugField = CalculateCommand::slugField;
@@ -37,6 +44,9 @@ class CarrierCalculateFormControllerTest extends WebTestCase
         $this->assertSame($weight, $result[CalculateView::PRICE_FIELD]);
     }
 
+    /**
+     * Error test - wrong carrier slug
+     */
     public function testCalculateShippingCostsErrorSlug(): void
     {
         $slugField = CalculateCommand::slugField;
@@ -59,6 +69,9 @@ class CarrierCalculateFormControllerTest extends WebTestCase
         $this->assertSame(Dto::ERROR_FIELD, $status);
     }
 
+    /**
+     * Error test - wrong weight
+     */    
     public function testCalculateShippingCostsErrorWeight(): void
     {
         $slugField = CalculateCommand::slugField;
