@@ -57,10 +57,10 @@ container          |
 
 ## Extension
 
-### Adding new carrier
+### Adding a new carrier
 
-1. Implement a new calculate class in [dir](./src/Application/CarrierService/ShippingCostCalculators/)
-2. Add a new row to the `app.carrier_data` parameter in the [config file](./config/services.yaml):
+1. Implement a new calculate class in the [dir](./src/Application/CarrierService/ShippingCostCalculators/)
+2. Add a new row to the `app.carrier_data` parameter in the [config file](./config/packages/parameters.yaml):
     - name
     - slug
     - classname (from #1)
