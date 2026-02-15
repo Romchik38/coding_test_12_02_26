@@ -17,7 +17,7 @@ final class CalculateCommand
     ) {
     }
 
-    /** 
+    /**
      * @throws InvalidArgumentException
      */
     public static function fromHash(array $hash): self

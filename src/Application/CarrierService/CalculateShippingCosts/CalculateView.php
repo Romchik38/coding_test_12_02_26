@@ -12,6 +12,9 @@ use JsonSerializable;
 
 final class CalculateView implements JsonSerializable
 {
+    public const PRICE_FIELD = 'price';
+    public const CURRENCY_FIELD = 'currency';
+
     public function __construct(
         public readonly Slug $carrierSlug,
         public readonly Weight $weight,
@@ -40,8 +43,8 @@ final class CalculateView implements JsonSerializable
         return [
             CalculateCommand::slugField => $this->getSlug(),
             CalculateCommand::weightField => $this->getWeight(),
-            'currency' => 'EUR',
-            'price' => $this->getPrice()
+            $this::CURRENCY_FIELD => 'EUR',
+            $this::PRICE_FIELD => $this->getPrice()
         ];
     }
 }

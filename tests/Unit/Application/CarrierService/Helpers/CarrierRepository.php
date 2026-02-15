@@ -8,6 +8,7 @@ use App\Application\CarrierService\CarrierRepositoryInterface;
 use App\Application\CarrierService\NoSuchCarrierException;
 use App\Domain\Carrier\VO\Slug;
 use App\Domain\Carrier\Carrier;
+use Doctrine\ORM\Query\Expr\Func;
 use InvalidArgumentException;
 
 final class CarrierRepository implements CarrierRepositoryInterface
@@ -38,5 +39,10 @@ final class CarrierRepository implements CarrierRepositoryInterface
             ));
         }
         return $carrier;
+    }
+
+    public function list(): array
+    {
+        return array_values($this->carriers);
     }
 }
